@@ -6,6 +6,9 @@ require('dotenv').config();
 const stripe = require('stripe')(process.env.STRIPE_SECRET);
 require('./connection')   // only need to import so connection can be used in any other files
 const server = http.createServer(app);
+const { verifyToken } = require('./auth');
+
+
 
 // Set up socket-io
 const {Server} = require('socket.io');
@@ -27,10 +30,10 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 // Defining routes for the app:
-app.use('/users', userRoutes)
-app.use('/products', productRoutes);
+app.use('/users', verifyToken,userRoutes)
+app.use('/products', verifyToken, productRoutes);
 app.use('/images', imageRoutes);
-app.use('/orders', orderRoutes);
+app.use('/orders', verifyToken, orderRoutes);
 
 
 // Defining a route for handling Stripe payments:

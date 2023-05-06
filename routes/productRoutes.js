@@ -67,7 +67,7 @@ router.delete('/:id', async(req, res)=> {
 })
 
 // get one specific product (and products in the same category)
-router.get('/:id', async(req, res)=> {
+router.get('/:id',async(req, res)=> {
   const {id} = req.params;
   try {
     const product = await Product.findById(id);

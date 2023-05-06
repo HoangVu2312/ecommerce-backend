@@ -13,7 +13,10 @@ router.post('/signup', async(req, res)=> {
   try {
     // directly create new User from data received and send back that new User 
     const user = await User.create({name, email, password}); // create is bult-in function
-    res.json(user);
+    
+    //create token for user
+    const token = jwt.sign({ id: user._id}, process.env.JWT_SECRET);
+    res.json({user, token})
   } catch (e) {
     // check if User alrady exist
     if(e.code === 11000) return res.status(400).send('Email already exists');
@@ -33,8 +36,8 @@ router.post('/login', async(req, res) => {
 
     //create token for user
     const token = jwt.sign({ id: user._id}, process.env.JWT_SECRET);
-    //res.json({user, token})
-    res.json(user)
+    res.json({user, token})
+    //res.json(user)
   } catch (e) {
     res.status(400).send(e.message)
   }

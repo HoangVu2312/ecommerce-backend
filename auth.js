@@ -1,8 +1,8 @@
 // This is authorization middleware file to verify token
 
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 
-export const verifyToken = async (req, res, next) => {
+module.exports.verifyToken = async (req, res, next) => {
     try {
         // step 1: get token from request-header
         let token = req.header("Authorization");
