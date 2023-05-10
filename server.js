@@ -13,7 +13,7 @@ const { verifyToken } = require('./auth');
 // Set up socket-io
 const {Server} = require('socket.io');
 const io = new Server(server, {
-  cors: 'http://localhost:3000',
+  cors: 'https://ecommerce-gsv7.onrender.com',
   methods: ['GET', 'POST', 'PATCH', "DELETE"]
 })
 
@@ -30,7 +30,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 // Defining routes for the app:
-app.use('/users', verifyToken,userRoutes)
+app.use('/users', userRoutes)
 app.use('/products', verifyToken, productRoutes);
 app.use('/images', imageRoutes);
 app.use('/orders', verifyToken, orderRoutes);
