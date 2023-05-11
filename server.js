@@ -8,6 +8,10 @@ require('./connection')   // only need to import so connection can be used in an
 const server = http.createServer(app);
 const { verifyToken } = require('./auth');
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://ecommerce-gsv7.onrender.com');
+  next();
+});
 
 
 // Set up socket-io
