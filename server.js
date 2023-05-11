@@ -13,7 +13,7 @@ const { verifyToken } = require('./auth');
 // Set up socket-io
 const {Server} = require('socket.io');
 const io = new Server(server, {
-  cors: 'https://ecommerce.onrender.com',
+  cors: 'https://ecommerce-gsv7.onrender.com',
   methods: ['GET', 'POST', 'PATCH', "DELETE"]
 })
 
