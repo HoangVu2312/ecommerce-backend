@@ -31,7 +31,7 @@ app.use(express.json());
 
 // Defining routes for the app:
 app.use('/users', userRoutes)
-app.use('/products', verifyToken, productRoutes);
+app.use('/products', productRoutes);
 app.use('/images', imageRoutes);
 app.use('/orders', verifyToken, orderRoutes);
 
