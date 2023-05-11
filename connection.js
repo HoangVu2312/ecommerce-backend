@@ -2,6 +2,7 @@
 require('dotenv').config();
 const mongoose = require('mongoose')
 const connectionStr = `mongodb+srv://${process.env.MONGOO_USERNAME}:${process.env.MONGOO_PASSWORD}@cluster0.fzwlydo.mongodb.net/?retryWrites=true&w=majority`;
+mongoose.set('strictQuery', false);
 
 mongoose.connect(connectionStr, {useNewUrlParser: true}).then(() => console.log("connected to mongoo db"))
 .catch(err => console.log(err))
