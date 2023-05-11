@@ -25,7 +25,9 @@ const imageRoutes = require('./routes/imageRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 
 // Add middleware crossing between client-server
-app.use(cors());
+app.use(cors({
+  origin: 'https://ecommerce-gsv7.onrender.com'
+}));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
