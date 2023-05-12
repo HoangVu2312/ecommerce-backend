@@ -8,7 +8,7 @@ require('./connection')   // only need to import so connection can be used in an
 const server = http.createServer(app);
 const { verifyToken } = require('./auth');
 
-res.setHeader('Access-Control-Allow-Origin', 'https://ecommerce-gsv7.onrender.com');
+
 
 
 
@@ -18,6 +18,11 @@ const io = new Server(server, {
   cors: 'https://ecommerce-gsv7.onrender.com',
   methods: ['GET', 'POST', 'PATCH', "DELETE"]
 })
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://ecommerce-gsv7.onrender.com');
+  next();
+});
 
 
 // Import required routes
